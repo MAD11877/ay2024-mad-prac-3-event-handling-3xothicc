@@ -1,5 +1,6 @@
 package sg.edu.np.mad.madpractical3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,6 +35,14 @@ public class MainActivity extends AppCompatActivity {
         tvDescription.setText(user.description);
         btnFollow.setText("Follow");
 
+        // Access the Intent and retrieve the random integer
+        Intent intent = getIntent();
+        if (intent.hasExtra("random_integer")) {
+            int randomNumber = intent.getIntExtra("random_integer", 0);
+            TextView textView = findViewById(R.id.tvName);
+            textView.setText(user.name + " " + randomNumber);
+        }
+
         // Set OnClickListener for the button
         btnFollow.setOnClickListener(view -> {
             // Toggle the followed status
@@ -43,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
             btnFollow.setText(user.isFollowed() ? "Unfollow" : "Follow");
 
             // Show a Toast message indicating the action
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();Toast.makeText(MainActivity.this, user.isFollowed() ? "Followed" : "Unfollowed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, user.isFollowed() ? "Followed" : "Unfollowed", Toast.LENGTH_SHORT).show();
         });
+
+
     }
 }
