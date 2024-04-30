@@ -29,11 +29,9 @@ public class ListActivity extends AppCompatActivity {
 
         ImageView mainimage = findViewById(R.id.mainimage);
 
-        // Set an OnClickListener for the ImageView
         mainimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Inside the onClick method, create and show the AlertDialog
                 showAlertDialog();}
         });
     }
